@@ -1,0 +1,21 @@
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul ul {
+  padding-left: 2ch;
+  border-left: 1px solid #bfbfbf;
+}
+
+.key {
+  color: #4e9590;
+}
+
+.brackets {
+  color: #f2cab8;
+}
+
+.index {
+  color: #bfbfbf;
+}
