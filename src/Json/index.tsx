@@ -42,7 +42,7 @@ function getJsonType(json: JsonType): JsonTypeEnum {
 }
 
 export const Json: React.FC<Props> = ({ json, isValue = true }) => {
-  const Element = isValue ? Inline : Block;
+  const Element = isValue ? "dd" : "div";
 
   if (json === null) {
     return <Element>null</Element>;
@@ -62,15 +62,28 @@ export const Json: React.FC<Props> = ({ json, isValue = true }) => {
   if (Array.isArray(json)) {
     return (
       <>
-        <Element className="brackets">[</Element>
-        <ul>
-          {json.map((json, index) => (
-            <Block key={index}>
-              <Inline className="index">{index}</Inline>:&nbsp;
-              <Json json={json} />
-            </Block>
-          ))}
-        </ul>
+        <span className="squareBrackets">[</span>
+        {isValue ? (
+          <dd>
+            <dl className="array">
+              {json.map((json, index) => (
+                <Block key={index}>
+                  <dt>{index}</dt>:&nbsp;
+                  <Json json={json} />
+                </Block>
+              ))}
+            </dl>
+          </dd>
+        ) : (
+          <dl className="array">
+            {json.map((json, index) => (
+              <Block key={index}>
+                <dt>{index}</dt>:&nbsp;
+                <Json json={json} />
+              </Block>
+            ))}
+          </dl>
+        )}
         <Block className="brackets">]</Block>
       </>
     );
@@ -81,14 +94,14 @@ export const Json: React.FC<Props> = ({ json, isValue = true }) => {
     }
 
     return (
-      <ul>
+      <dl className="object">
         {Object.entries(json).map(([key, value]) => (
           <Block key={key}>
-            <Inline className="key">{key}</Inline>:&nbsp;
+            <dt>{key}</dt>:&nbsp;
             <Json json={value} />
           </Block>
         ))}
-      </ul>
+      </dl>
     );
   }
 

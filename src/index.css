@@ -1,21 +1,30 @@
-ul {
+main {
+  font-family: monospace;
+}
+
+dl {
   margin: 0;
   padding: 0;
 }
 
-ul ul {
+dl dl {
   padding-left: 2ch;
   border-left: 1px solid #bfbfbf;
 }
 
-.key {
+dt, dd {
+  margin: 0;
+  display: inline;
+}
+
+dl.array dt {
+  color: #bfbfbf;
+}
+
+dl.object dt {
   color: #4e9590;
 }
 
-.brackets {
+.squareBrackets {
   color: #f2cab8;
-}
-
-.index {
-  color: #bfbfbf;
 }

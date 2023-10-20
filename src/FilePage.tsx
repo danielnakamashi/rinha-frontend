@@ -9,10 +9,12 @@ type Props = {
 export const FilePage: React.FC<Props> = ({ json }) => {
   return (
     <>
-      <h2>file name</h2>
-      <code>
+      <header>
+        <h1>file name</h1>
+      </header>
+      <main>
         <Json json={json} isValue={false} />
-      </code>
+      </main>
     </>
   );
 };
